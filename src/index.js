@@ -7,7 +7,6 @@ import "font-awesome/css/font-awesome.css";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
-import axios from "axios";
 ReactDOM.render(
   <BrowserRouter>
     <App />

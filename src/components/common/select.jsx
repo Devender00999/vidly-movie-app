@@ -4,7 +4,7 @@ const Select = (props) => {
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <select className="form-control" name={name} id={name} {...rest}>
-        <option value="" disabled selected>
+        <option value="" disabled>
           Select a Genre
         </option>
         {options.map((option) => (

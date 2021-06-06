@@ -5,22 +5,29 @@ import Rentals from "./components/rentals";
 import Movies from "./components/movies";
 import NotFound from "./components/notfound";
 import MovieForm from "./components/movieForm";
-import LoginForm from "./components/common/loginForm";
+import LoginForm from "./components/loginForm";
 import { Redirect, Route, Switch } from "react-router-dom";
-import RegisterForm from "./components/common/registerForm";
+import RegisterForm from "./components/registerForm";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Logout from "./components/logout";
+import auth from "./services/auth";
 
 class App extends Component {
   state = {};
+  componentDidMount() {
+    const user = auth.getCurrentUser();
+    this.setState({ user });
+  }
   render() {
     return (
       <React.Fragment>
         <ToastContainer />
-        <Navbar />
+        <Navbar user={this.state.user} />
         <main className="container pt-4">
           <Switch>
             <Route path="/login" component={LoginForm} />
+            <Route path="/logout" component={Logout} />
             <Route path="/register" component={RegisterForm} />
             <Route path="/customers" component={Customers} />
             <Route path="/movies" exact component={Movies} />

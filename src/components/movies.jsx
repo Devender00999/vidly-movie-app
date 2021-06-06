@@ -7,7 +7,6 @@ import ListGroup from "./listGroup";
 import MoviesTable from "./common/moviesTable";
 import _ from "lodash";
 import { Link } from "react-router-dom";
-import Input from "./common/input";
 import SearchBox from "./common/searchBox";
 import { toast } from "react-toastify";
 class Movies extends Component {

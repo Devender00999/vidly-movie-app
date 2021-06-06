@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Form from "./common/form";
 import Joi from "joi-browser";
 import { getGenres } from "../services/genreService";
-import { getMovies, getMovie, saveMovie } from "../services/movieService";
-import { toast } from "react-toastify";
+import { getMovie, saveMovie } from "../services/movieService";
 class MovieForm extends Form {
   state = {
     data: {
@@ -24,7 +23,6 @@ class MovieForm extends Form {
   };
 
   doSubmit = async () => {
-    const data = { ...this.state.data };
     saveMovie(this.state.data);
     this.props.history.push("/movies");
   };
@@ -59,7 +57,6 @@ class MovieForm extends Form {
     this.populateMovie();
   }
   render() {
-    const { id } = this.props.match.params;
     return (
       <React.Fragment>
         <h1>Movie Form</h1>
