@@ -107,6 +107,7 @@ class Movies extends Component {
         onLike={this.handleLiked}
         onDelete={this.handleDelete}
         onSort={this.handleSort}
+        user={this.props.user}
       />
     );
   };
@@ -129,9 +130,11 @@ class Movies extends Component {
               />
             </div>
             <div className="col">
-              <Link className="btn btn-primary mb-3" to={`/movies/new`}>
-                New Movie
-              </Link>
+              {this.props.user && (
+                <Link className="btn btn-primary mb-3" to={`/movies/new`}>
+                  New Movie
+                </Link>
+              )}
               <h3>Showing {totalCount} Movies in the Database</h3>
               <SearchBox
                 value={this.state.searchQuery}
