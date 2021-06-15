@@ -7,6 +7,8 @@ import "font-awesome/css/font-awesome.css";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
+console.log(process.env.REACT_APP_NAME);
+
 ReactDOM.render(
   <BrowserRouter>
     <App />

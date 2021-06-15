@@ -1,8 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Like from "./like";
-
 import Table from "./table";
+import auth from "../../services/auth.js";
+const deleteButton = {
+  key: "delete",
+  content: (movie) =>{
+      return (<button
+        className="btn btn-danger"
+        onClick={() => this.props.onDelete(movie)}
+      >
+        Delete
+      </button>)}
+}
 
 class MoviesTable extends Component {
   columns = [
@@ -23,20 +33,15 @@ class MoviesTable extends Component {
       key: "like",
       content: (movie) => <Like movie={movie} onLiked={this.props.onLike} />,
     },
-    {
-      key: "delete",
-      content: (movie) =>
-        this.props.user &&
-        this.props.user.isAdmin && (
-          <button
-            className="btn btn-danger"
-            onClick={() => this.props.onDelete(movie)}
-          >
-            Delete
-          </button>
-        ),
-    },
+    
   ];
+  constructor(){
+    super();
+    const user = auth.getCurrentUser();
+    if (user && user.isAdmin){
+      this.columns.push(deleteButton)
+    } 
+  }
   render() {
     const { movies, onSort, sortColumn } = this.props;
     return (
